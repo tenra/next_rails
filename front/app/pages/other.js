@@ -1,8 +1,12 @@
-function Other() {
+import Link from 'next/link';
+
+export default function Other() {
   return <div>
           <p>別ページ</p>
-          <p><a href="/">戻る</a></p>
-        </div>;
+          <Link href="/">
+            <a>Back to home</a>
+          </Link>
+         </div>;
 }
 
-export default Other;
+//export default Other;

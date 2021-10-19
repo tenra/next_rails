@@ -2,10 +2,14 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link';
+import Layout from '../components/layout'
 
 export default function Home(props) {
   return (
-    <div>
+    <Layout>
+      <Head>
+        <title>First Post</title>
+      </Head>
       <h1>Postの一覧</h1>
       {props.posts.map((post) =>
         <p>{ post.id },{ post.title }</p>
@@ -18,7 +22,7 @@ export default function Home(props) {
       </Link>
       <Image src="/favicon.ico" width={64} height={64} alt="image" />
       <Image src="/vercel.svg" width={64} height={64} alt="image" />
-    </div>
+    </Layout>
   )
 }
 
