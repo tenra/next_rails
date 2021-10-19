@@ -11,8 +11,12 @@ export default function Home(props) {
         <title>First Post</title>
       </Head>
       <h1>Postの一覧</h1>
-      {props.posts.map((post) =>
-        <p>{ post.id },{ post.title }</p>
+      {props.posts.map((post, index) =>
+        <div key={index}>
+        <Link href={`/posts/${encodeURIComponent(post.id)}`}>
+          <a>{ post.id },{ post.title }</a>
+        </Link>
+        </div>
       )}
       <p>別ページ</p>
       <p><a href="/other">other_page</a></p>
