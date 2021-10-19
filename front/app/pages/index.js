@@ -7,8 +7,10 @@ export default function Home(props) {
     <div>
       <h1>Postの一覧</h1>
       {props.posts.map((post) =>
-        <p>{ post.title }</p>
+        <p>{ post.id },{ post.title }</p>
       )}
+      <p>別ページ</p>
+      <p><a href="/other">other_page</a></p>
     </div>
   )
 }
