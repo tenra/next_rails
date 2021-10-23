@@ -1,16 +1,16 @@
 import { useState } from 'react'
 
-function CommentsPage() {
+function PostsPage() {
   const [posts, setPosts] = useState([])
   const [title, setPost] = useState('')
 
-  const fetchComments = async () => {
+  const fetchPosts = async () => {
     const response = await fetch('http://localhost:3000/posts')
     const data = await response.json()
     setPosts(data)
   }
 
-  const submitComment = async () => {
+  const handleSubmit = async () => {
     const response = await fetch('http://localhost:3000/posts', {
       method: 'POST',
       body: JSON.stringify({ title }),
@@ -23,13 +23,13 @@ function CommentsPage() {
     setPost("");
   }
 
-  const deleteComment = async commentId => {
-    const response = await fetch(`http://localhost:3000/posts/${commentId}`, {
-      method: 'DELETE'
+  const deletePost = async postId => {
+    const response = await fetch(`http://localhost:3000/posts/${postId}`, {
+      method: 'DELETE',
     })
     const data = await response.json()
-    console.log(data)
-    fetchComments()
+    console.log(data);
+    fetchPosts();
   }
   return (
     <>
@@ -40,15 +40,15 @@ function CommentsPage() {
           value={title}
           onChange={e => setPost(e.target.value)}
         />
-        <button onClick={submitComment}>Submit title</button>
+        <button onClick={handleSubmit}>Submit Post</button>
       </div>
       <hr />
-      <button onClick={fetchComments}>Load comments</button>
+      <button onClick={fetchPosts}>Load posts</button>
       {posts.map(post => {
         return (
           <div key={post.id}>
             {post.id}. {post.title}
-            <button onClick={() => deleteComment(post.id)}>Delete</button>
+            <button onClick={() => deletePost(post.id)}>Delete</button>
           </div>
         )
       })}
@@ -56,4 +56,4 @@ function CommentsPage() {
   )
 }
 
-export default CommentsPage
+export default PostsPage
