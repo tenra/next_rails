@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 function PostsPage() {
   const [posts, setPosts] = useState([])
@@ -27,8 +27,6 @@ function PostsPage() {
     const response = await fetch(`http://localhost:3000/posts/${postId}`, {
       method: 'DELETE',
     })
-    const data = await response.json()
-    console.log(data);
     fetchPosts();
   }
   return (
