@@ -21,11 +21,9 @@ export default function Home(props) {
       <p>別ページ</p>
       <p><a href="/other">other_page</a></p>
 
-      <Link href="/posts/new">
-        <a>New Post</a>
-      </Link>
       <Image src="/favicon.ico" width={64} height={64} alt="image" />
       <Image src="/vercel.svg" width={64} height={64} alt="image" />
+        <hr />
     </Layout>
   )
 }
