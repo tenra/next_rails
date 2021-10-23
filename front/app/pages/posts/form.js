@@ -1,13 +1,13 @@
 import { useState } from 'react'
 
 function CommentsPage() {
-  const [posts, setComments] = useState([])
-  const [title, setComment] = useState('')
+  const [posts, setPosts] = useState([])
+  const [title, setPost] = useState('')
 
   const fetchComments = async () => {
     const response = await fetch('http://localhost:3000/posts')
     const data = await response.json()
-    setComments(data)
+    setPosts(data)
   }
 
   const submitComment = async () => {
@@ -19,7 +19,8 @@ function CommentsPage() {
       }
     })
     const data = await response.json()
-    console.log(data)
+    console.log(data);
+    setPost("");
   }
 
   const deleteComment = async commentId => {
@@ -32,11 +33,12 @@ function CommentsPage() {
   }
   return (
     <>
-      <div>
+      <div className="form">
         <input
           type='text'
+          name='title'
           value={title}
-          onChange={e => setComment(e.target.value)}
+          onChange={e => setPost(e.target.value)}
         />
         <button onClick={submitComment}>Submit title</button>
       </div>
