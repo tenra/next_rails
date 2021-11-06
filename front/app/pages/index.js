@@ -29,7 +29,7 @@ export default function Home(props) {
 }
 
 export async function getStaticProps() {
-  const response = await fetch("http://api:3000/posts", {method: "GET"});
+  const response = await fetch("http://api:8000/posts", {method: "GET"});
   const json = await response.json();
 
   return {

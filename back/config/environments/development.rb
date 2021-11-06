@@ -10,6 +10,7 @@ Rails.application.configure do
   config.eager_load = false
 
   config.hosts << "api"
+  config.hosts << '127.0.0.1'
 
   # Show full error reports.
   config.consider_all_requests_local = true

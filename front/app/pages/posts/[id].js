@@ -18,7 +18,7 @@ const Post = ({ post }) => {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch('http://api:3000/posts')
+  const res = await fetch('http://api:8000/posts')
   const posts = await res.json()
 
   const paths = posts.map((post) => ({
@@ -30,7 +30,7 @@ export async function getStaticPaths() {
 
 
 export async function getStaticProps({ params }) {
-  const res = await fetch(`http://api:3000/posts/${params.id}`)
+  const res = await fetch(`http://api:8000/posts/${params.id}`)
   const post = await res.json()
 
   return { props: { post } }

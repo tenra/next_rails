@@ -5,13 +5,13 @@ function PostsPage() {
   const [title, setPost] = useState('')
 
   const fetchPosts = async () => {
-    const response = await fetch('http://localhost:3000/posts')
+    const response = await fetch('http://api:8000/posts')
     const data = await response.json()
     setPosts(data)
   }
 
   const handleSubmit = async () => {
-    const response = await fetch('http://localhost:3000/posts', {
+    const response = await fetch('http://api:8000/posts', {
       method: 'POST',
       body: JSON.stringify({ title }),
       headers: {
@@ -24,7 +24,7 @@ function PostsPage() {
   }
 
   const deletePost = async postId => {
-    const response = await fetch(`http://localhost:3000/posts/${postId}`, {
+    const response = await fetch(`http://api:8000/posts/${postId}`, {
       method: 'DELETE',
     })
     fetchPosts();

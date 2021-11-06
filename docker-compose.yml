@@ -3,21 +3,13 @@ version: "3"
 services:
   db:
     container_name: database
-    image: mysql:5.7
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    image: postgres:latest
     environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: sample
-      MYSQL_USER:
-      MYSQL_PASSWORD:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-      TZ: Asia/Tokyo
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - ./postgres_data:/var/lib/postgresql
     ports:
       - 3308:3306
-    volumes:
-      - ./database/my.cnf:/etc/mysql/conf.d/my.cnf
-      - ./database/data:/var/lib/mysql
-      - ./database/sql:/docker-entrypoint-initdb.d
 
   api:
     container_name: back
@@ -28,11 +20,11 @@ services:
       context: back/
       dockerfile: Dockerfile
     ports:
-      - 3000:3000
+      - 8000:8000
     volumes:
       - ./back:/app
     #command: rails server -b 0.0.0.0
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 8000 -b '0.0.0.0'"
 
   front:
     build:
