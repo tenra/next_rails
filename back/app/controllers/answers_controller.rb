@@ -1,7 +1,8 @@
 class AnswersController < ApplicationController
 
   def index
-    @answers = Answer.all
+    @post = Post.find(params[:post_id])
+    @answers = @post.answers
     render json: @answers
   end
 
