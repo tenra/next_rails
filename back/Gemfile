@@ -6,6 +6,9 @@ ruby '2.5.9'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.0.4', '>= 6.0.4.1'
 gem 'pg'
+gem 'rack-cors'
+gem "devise"
+gem "devise_token_auth"
 # Use mysql as the database for Active Record
 #gem 'mysql2', '>= 0.4.4'
 # Use Puma as the app server
@@ -24,7 +27,6 @@ gem 'puma', '~> 4.1'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-gem 'rack-cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

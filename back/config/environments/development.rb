@@ -12,6 +12,8 @@ Rails.application.configure do
   config.hosts << "api"
   config.hosts << '127.0.0.1'
 
+  config.action_mailer.default_url_options = { host: 'localhost', port: 8000 }
+
   # Show full error reports.
   config.consider_all_requests_local = true
 
